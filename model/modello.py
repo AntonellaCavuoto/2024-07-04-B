@@ -45,15 +45,16 @@ class Model:
                         scoreNuovo = 300
                         parziale.append(vicino)
                         self._ricorsione(parziale, vicino, score + scoreNuovo)
-                        self._avvistamentiMese[vicino.datetime.month] = self._avvistamentiMese[vicino.datetime.month] - 1
+                        self._avvistamentiMese[vicino.datetime.month] = self._avvistamentiMese[
+                                                                            vicino.datetime.month] - 1
                         parziale.pop()
                     else:
                         scoreNuovo = 100
                         parziale.append(vicino)
                         self._ricorsione(parziale, vicino, score + scoreNuovo)
-                        self._avvistamentiMese[vicino.datetime.month] = self._avvistamentiMese[vicino.datetime.month] - 1
+                        self._avvistamentiMese[vicino.datetime.month] = self._avvistamentiMese[
+                                                                            vicino.datetime.month] - 1
                         parziale.pop()
-
 
     def isAmmissibile(self, nodo, parziale):
         """Gli avvistamenti devono avere durata strettamente crescente
@@ -73,7 +74,6 @@ class Model:
                 ammissibile = False
 
         return ammissibile
-
 
     def buildGraph(self, state, year):
         self._graph.clear()

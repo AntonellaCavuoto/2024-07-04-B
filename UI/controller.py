@@ -17,13 +17,13 @@ class Controller:
         year = self._selectedYear
         if state is None:
             self._view.txt_result1.controls.clear()
-            self._view.txt_result1.controls.append(ft.Text(f"Attenzione, scegliere uno stato!", color = "red"))
+            self._view.txt_result1.controls.append(ft.Text(f"Attenzione, scegliere uno stato!", color="red"))
             self._view.update_page()
             return
 
         if year is None:
             self._view.txt_result1.controls.clear()
-            self._view.txt_result1.controls.append(ft.Text(f"Attenzione, scegliere un anno!", color = "red"))
+            self._view.txt_result1.controls.append(ft.Text(f"Attenzione, scegliere un anno!", color="red"))
             self._view.update_page()
             return
 
@@ -39,7 +39,6 @@ class Controller:
         for lc in listConn:
             self._view.txt_result1.controls.append(ft.Text(f"{lc}"))
         self._view.update_page()
-
 
     def handle_path(self, e):
         bestPath, bestScore = self._model.getBestPath()
@@ -57,7 +56,6 @@ class Controller:
             self._view.ddyear.options.append(ft.dropdown.Option(data=year, text=year, on_click=self.readDDYear))
         self._view.update_page()
 
-
     def readDDYear(self, e):
         if e.control.data is None:
             self._selectedYear = None
@@ -66,14 +64,14 @@ class Controller:
             self.fillDDState(self._selectedYear)
 
         print(f"readDDYears -- {self._selectedYear}")
-        
+
     def fillDDState(self, year):
         states = self._model.getStates(year)
         yearsDD = []
         for state in states:
             self._view.ddstate.options.append(ft.dropdown.Option(data=state, text=state, on_click=self.readDDState))
         self._view.update_page()
-        
+
     def readDDState(self, e):
         if e.control.data is None:
             self._selectedState = None
@@ -81,4 +79,3 @@ class Controller:
             self._selectedState = e.control.data
 
         print(f"readDDStates -- {self._selectedState}")
-
